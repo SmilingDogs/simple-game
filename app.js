@@ -69,7 +69,8 @@ function creatCircle() {
   const { width, height } = board.getBoundingClientRect();
   let circleCoordinateX = randomNumber(0, width - size);
   let circleCoordinateY = randomNumber(0, height - size);
-  let circleColor = "#" + Math.round(0xffffff * Math.random()).toString(16);
+//*   let circleColor = "#" + Math.floor(0xffffff * Math.random()).toString(16); Unstable, buggy
+  let circleColor =  "#" + Math.floor(Math.random() * 0xffffff).toString(16).padEnd(6, "0");
   circle.style.width = size + "px";
   circle.style.height = size + "px";
   circle.style.backgroundColor = circleColor;
