@@ -5,6 +5,7 @@ const timeIndicator = document.getElementById("time");
 const board = document.getElementById("board");
 const result = document.querySelector(".result");
 const reset = document.getElementById("reset")
+const timeLeft = document.querySelector(".time-left")
 
 
 let time = 0;
@@ -23,8 +24,17 @@ selectTime.addEventListener("click", (e) => {
     startGame()
   } else if (e.target.classList.contains("set")) {
     time = +prompt("Введите время игры в секундах")
-    screens[1].classList.add("up");
-    startGame()
+    if (time) {
+      screens[1].classList.add("up");
+      startGame()
+    } else {
+      screens[1].classList.add("up");
+      result.classList.add("hide")
+      timeLeft.classList.add("hide")
+      board.innerHTML = `<h1>See you next time:)</h1>`;
+      return //* дальше код не должен работать.
+    }
+
   }
 });
 
