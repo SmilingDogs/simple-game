@@ -3,6 +3,8 @@ const screens = document.querySelectorAll(".screen");
 const selectTime = document.getElementById("time-list");
 const timeIndicator = document.getElementById("time");
 const board = document.getElementById("board");
+const result = document.querySelector(".result")
+console.log(result);
 
 let time = 0;
 let score = 0;
@@ -25,13 +27,7 @@ selectTime.addEventListener("click", (e) => {
   }
 });
 
-board.addEventListener("click", (e) => {
-  if (e.target.classList.contains("circle")) {
-    e.target.remove();
-    score++;
-    creatCircle();
-  }
-});
+board.addEventListener("click", runGame);
 
 const randomNumber = (min, max) =>
   Math.round(Math.random() * (max - min) + min);
@@ -56,9 +52,11 @@ function decreaseTime() {
 }
 
 function finishGame() {
+  board.removeEventListener("click", runGame)
   clearInterval(interval)
+  result.innerHTML = ``
   timeIndicator.parentNode.classList.add("hide")
-  board.innerHTML = `<h1> Your Score: <span class="primary">${score}</span></h1>`;
+  board.innerHTML = `<h1> Final Score: <span class="primary">${score}</span></h1>`;
 
 }
 
@@ -77,4 +75,16 @@ function creatCircle() {
   circle.style.top = circleCoordinateY + "px";
   circle.style.left = circleCoordinateX + "px";
   board.append(circle);
+}
+
+function runGame(e){
+  if (e.target.classList.contains("circle")) {
+    e.target.remove();
+    score++;
+    result.innerHTML = `<h3 class="result"> Bingo! <span>Current Score: ${score}</span></h3>`
+    creatCircle();
+  } else {
+    score--;
+    result.innerHTML = `<h3 class="result"> Miss! <span>Current Score: ${score}</span></h3>`
+  }
 }
