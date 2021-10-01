@@ -21,7 +21,9 @@ a {
 a:hover {
   color: #16D9E3;
 }
-
+ul {
+  margin: 0;
+}
 .start {
   font-size: 1.5rem;
 }
@@ -55,10 +57,10 @@ h1 {
 }
 
 .time-list li {
-  margin: 10px;
+  margin: 20px;
 }
 
-.time-btn {
+.time-btn, .set, .reset {
   background-color: transparent;
   border: 2px solid #C0C0C0;
   color: #fff;
@@ -67,14 +69,11 @@ h1 {
   padding: .5rem 1rem;
   font-size: 1.5rem;
 }
-.set {
-  background-color: transparent;
-  border: 2px solid #C0C0C0;
-  color: #fff;
-  cursor: pointer;
-  font-family: inherit;
-  padding: .5rem 1rem;
-  font-size: 1.5rem;
+.reset.hidden {
+  display: none;
+}
+.screen .reset {
+  margin-bottom: 30px;
 }
 .time-btn:hover {
   border: 2px solid #16D9E3;

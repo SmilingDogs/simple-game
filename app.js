@@ -3,8 +3,9 @@ const screens = document.querySelectorAll(".screen");
 const selectTime = document.getElementById("time-list");
 const timeIndicator = document.getElementById("time");
 const board = document.getElementById("board");
-const result = document.querySelector(".result")
-console.log(result);
+const result = document.querySelector(".result");
+const reset = document.getElementById("reset")
+
 
 let time = 0;
 let score = 0;
@@ -57,8 +58,12 @@ function finishGame() {
   result.innerHTML = ``
   timeIndicator.parentNode.classList.add("hide")
   board.innerHTML = `<h1> Final Score: <span class="primary">${score}</span></h1>`;
+  reset.classList.remove("hidden")
 
 }
+reset.addEventListener("click", () => {
+  window.location.reload()
+})
 
 function creatCircle() {
   const circle = document.createElement("div");
